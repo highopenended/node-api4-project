@@ -26,10 +26,10 @@ server.post("/api/register", (req, res) => {
     });
   } else {
     try {
-      res.status(200).json({username,password});
+      res.status(201).json({ username, password });
     } catch (err) {
-      res.status(404).json({
-        message: "Username Missing",
+      res.status(500).json({
+        message: "Error registering user...",
         err: err.message,
         stack: err.stack,
       });
@@ -49,8 +49,8 @@ server.post("/api/login", (req, res) => {
         message: `Welcome back, ${username}!`,
       });
     } catch (err) {
-      res.status(404).json({
-        message: "Username Missing",
+      res.status(500).json({
+        message: "Error logging in...",
         err: err.message,
         stack: err.stack,
       });
